@@ -7,7 +7,7 @@ __author__ = 'brent'
 @app.task
 def geocode(unformatted_address):
     geocoder = GoogleRateLimitedGeocoder.getInstance()
-    geocoder.initialize(daily_rate=2500, google_api_key='AIzaSyAIFvnrO8kcs82ezDMSruBbSGnbsHW5x4w')
+    geocoder.initialize(daily_rate=2500, google_api_key='')
     return geocoder.geocode(unformatted_address)
 
 
