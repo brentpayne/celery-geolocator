@@ -18,6 +18,17 @@ We only want to use our free daily Google API limit of geocode requests per day.
 use a single celery worker that runs a rate limited geocoder.  The celery worker reads all tasks off a queue
 populated by python calls to **`gecode.delay(unformatted_address)`**.  running the celery worker.
 
+This example assumes rabbitmq is setup on localhost using default ports.
+
 ```sh
-$ celery -A celery_geolocator worker --loglevel=info
+celery-geolocator/examples$ celery worker --app celery_geolocator --loglevel=info --config=celeryconfig --apikey=<GOOGLE_API_KEY>
+celery-geolocator/examples$ python test_celery_task.py "Bourbon County"
+   > geocoding Bourbon County
+   > [u'Bourbon County, KY, USA', [38.2170752, -84.2278796]]
 ```
+
+
+### Roadmap
+
+ * Incorporate yaml or json configuration files for setting celery_geolocator configuration options
+ * Add options for using other geocoders than Google, expose more geopy features, etc.
