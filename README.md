@@ -16,7 +16,7 @@ This package requires that you already have celery installed, see [celery instal
 
 We only want to use our free daily Google API limit of geocode requests per day.  To help maintain this, we
 use a single celery worker that runs a rate limited geocoder.  The celery worker reads all tasks off a queue
-populated by python calls to **`gecode.delay(unformatted_address)`**.  running the celery worker.
+populated by python calls to **`geocode.delay(unformatted_address)`**.  running the celery worker.
 
 This example assumes rabbitmq is setup on localhost using default ports.
 

@@ -12,8 +12,8 @@ requirements = [
 setup(
     name='celery_geolocator',
     version='0.0.1',
-    description='KennyG SAX Handler',
-    long_description="A developer friendly library for writing SAX XML parsers.",
+    description='Celery Geolocator',
+    long_description="A celery wrapper around geopy",
     author='Brent Payne',
     author_email='brent.payne@gmail.com',
     url='http://www.github.com/brentpayne/celery-geolocator',
@@ -24,6 +24,6 @@ setup(
         "Programming Language :: Python",
         "Operating System :: OS Independent",
         "Intended Audience :: Developers",
-    ], requires=['celery']
+    ], requires=['celery', 'geopy']
 
 )

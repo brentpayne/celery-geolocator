@@ -1,4 +1,9 @@
 __author__ = 'brent'
 
 
-configuration = {}
+configuration = {
+    'Google': {
+        'API_KEY ': None,
+        'daily_rate': 2500
+    }
+}

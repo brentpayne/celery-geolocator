@@ -11,7 +11,7 @@ __author__ = 'brent'
 def geocode(unformatted_address):
     print 'conf', configuration
     geocoder = GoogleRateLimitedGeocoder.getInstance()
-    geocoder.initialize(daily_rate=2500, google_api_key=configuration['API_KEY'])
+    geocoder.initialize(daily_rate=configuration['Google']['daily_rate'], google_api_key=configuration['Google']['API_KEY'])
     return geocoder.geocode(unformatted_address)
 
 
