@@ -18,4 +18,4 @@ app.user_options['preload'].add(
 def on_preload_parsed(options, **kwargs):
     print options
     set_trace()
-    configuration['Goggle']['API_KEY'] = options['API_KEY']
+    configuration['Google']['API_KEY'] = options['API_KEY']
