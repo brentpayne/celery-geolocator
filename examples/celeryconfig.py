@@ -8,3 +8,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_ACCEPT_CONTENT=['json']
 
 CELERY_RDB_PORT='6902'
+
+CELERY_ROUTES = {'celery_geolocator.tasks.geocode': {'queue': 'geocode', 'routing_key': 'geocode'}}
+
+CELERY_CREATE_MISSING_QUEUES = True

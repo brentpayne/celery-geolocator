@@ -1,10 +1,12 @@
 import sys
-from celery_geolocator.celery import app
+from celery import Celery
+#from celery_geolocator.celery import app
 from celery_geolocator.tasks import geocode
 
 __author__ = 'brent'
 
-app.config_from_object('celeryconfig')
+app = Celery()
+app.config_from_object('examples.celeryconfig')
 
 for arg in sys.argv[1:]:
     print "geocoding", arg
