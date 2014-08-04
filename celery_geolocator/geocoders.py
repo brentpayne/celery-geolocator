@@ -3,8 +3,8 @@ import sys
 
 from geopy.geocoders import GoogleV3
 
-from celery_geolocator.lib.decorators import rate_limit, MaxCallsExceededException
-from celery_geolocator.lib.singleton import Singleton
+from celery_geolocator.helpers.decorators import rate_limit, MaxCallsExceededException
+from celery_geolocator.helpers.singleton import Singleton
 
 
 __author__ = 'brent'
