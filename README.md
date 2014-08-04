@@ -21,17 +21,17 @@ populated by python calls to **`geocode.delay(unformatted_address)`**.  running 
 This example assumes rabbitmq is setup on localhost using default ports.
 
 ```sh
-$ celery worker --app celery_geolocator --loglevel=info -Q geocode --config=examples.celeryconfig --apikey=<GOOGLE_API_KEY>
-$ python examples/test_celery_task.py "Bourbon County"
+$ celery worker --app celery_geolocator --loglevel=info -Q geocode --config=examples.strait_celery.celeryconfig --apikey=<GOOGLE_API_KEY>
+$ python examples/strait_celery/test_celery_task.py "Bourbon County"
    > geocoding Bourbon County
    > [u'Bourbon County, KY, USA', [38.2170752, -84.2278796]]
 ```
 
 #### NOTE: DO NOT DO THIS:
 ```sh
-$ celery worker --app celery_geolocator --loglevel=info -Q=geocode --config=examples.celeryconfig --apikey=<GOOGLE_API_KEY>
+$ celery worker --app celery_geolocator -Q=geocode ...
 ```
-It will set the worker to listen to a queue named `=geocode`.
+It will set the worker to listen to a queue named `=geocode`.  Never use the *-Q* option with an *=*.
 
 
 ### Roadmap

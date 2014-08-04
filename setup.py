@@ -5,13 +5,14 @@ from setuptools import find_packages
 
 
 requirements = [
-    'celery==3.1.11',
+    'celery>=3.1',
+    'geopy>=1.1'
 ]
 
 
 setup(
     name='celery_geolocator',
-    version='0.0.1',
+    version='0.0.2',
     description='Celery Geolocator',
     long_description="A celery wrapper around geopy",
     author='Brent Payne',
