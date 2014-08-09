@@ -5,8 +5,8 @@ from setuptools import find_packages
 
 
 requirements = [
-    'celery>=3.1',
-    'geopy>=1.1'
+    'celery>=3.1.11',
+    'geopy>=1.1.1'
 ]
 
 
@@ -22,9 +22,13 @@ setup(
     install_requires=requirements,
     keywords=['celery', 'geopy', 'geolocate', 'celery-geolocator', 'geolocator'],
     classifiers=[
+        "Topic :: Text Processing :: General",
+        "Topic :: Text Processing",
         "Programming Language :: Python",
         "Operating System :: OS Independent",
         "Intended Audience :: Developers",
+        ("License :: OSI Approved :: GNU Lesser General Public License v3" +
+         " (LGPLv3)")
     ], requires=['celery', 'geopy']
 
 )
