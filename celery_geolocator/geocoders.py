@@ -36,8 +36,8 @@ class GoogleRateLimitedGeocoder(Singleton):
                     max_limit=self.daily_rate,
                     refresh_after_timedelta=self.timedelta)
         def rate_limited_geocoding(unformatted_address):
-            canonical_address, (latitude, longitude) = self.geolocator.geocode(unformatted_address)
-            return canonical_address, (latitude, longitude)
+            location = self.geolocator.geocode(unformatted_address)
+            return location.address, (location.latitude, location.longitude, location.altitude), location.raw
         try:
             return rate_limited_geocoding(unformatted_address)
         except MaxCallsExceededException as e:
