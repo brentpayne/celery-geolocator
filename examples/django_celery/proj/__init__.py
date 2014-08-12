@@ -1,17 +1,5 @@
-'''
-.. container:: creation-info
+from __future__ import absolute_import
 
-    Created on 8/4/14
-
-    @author: brentpayne
-
-TODO: document frame's intent. The framer is brentpayne
-'''
-
-
-def main():
-    pass
-
-
-if __name__ == '__main__':
-    main()
+# This will make sure the app is always imported when
+# Django starts so that shared_task will use this app.
+from .celery import app as celery_app
