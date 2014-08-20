@@ -13,6 +13,8 @@ app.user_options['preload'].add(
     Option('--apikey', dest="API_KEY",
            help='The API key to use in the geocoder')
 )
+
+
 @signals.user_preload_options.connect
 def on_preload_parsed(options, **kwargs):
     configuration['Google']['API_KEY'] = options['API_KEY']

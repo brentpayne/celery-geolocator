@@ -4,10 +4,11 @@ from time import sleep
 __author__ = 'brent'
 
 
-class MaxCallsExceededException(Exception): pass
+class MaxCallsExceededException(Exception):
+    pass
 
 
-class rate_limit(object):  # known flake8 fail, not putting into camel case b/c used as decorator
+class rate_limit(object):  # known flake8 fail, not putting into camel case b/c used as decorator  # noqa
     """
     This is a single threaded solution and does not rate limit across threads or processes.
     """
@@ -39,4 +40,3 @@ class rate_limit(object):  # known flake8 fail, not putting into camel case b/c 
 
             return return_value
         return rate_limited_function
-

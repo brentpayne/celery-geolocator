@@ -1,5 +1,6 @@
 from datetime import timedelta
 import sys
+from geopy.exc import GeocoderQueryError, GeocoderQuotaExceeded, ConfigurationError
 
 from geopy.geocoders import GoogleV3
 
@@ -16,6 +17,7 @@ class RateLimitExceededException(MaxCallsExceededException):
         self.number = number
         self.timedelta = timedelta
 
+
 class GoogleRateLimitedGeocoder(Singleton):
     def __init__(self):
         self.uninitialized = False
@@ -25,7 +27,7 @@ class GoogleRateLimitedGeocoder(Singleton):
         self.timedelta = timedelta(days=1)
         self.between_timedelta = timedelta(seconds=1)
         google_api_key = google_api_key
-        if(google_api_key):
+        if google_api_key:
             self.geolocator = GoogleV3(api_key=google_api_key)
         else:
             self.geolocator = GoogleV3()
@@ -38,10 +40,13 @@ class GoogleRateLimitedGeocoder(Singleton):
         def rate_limited_geocoding(unformatted_address):
             location = self.geolocator.geocode(unformatted_address)
             return location.address, (location.latitude, location.longitude, location.altitude), location.raw
+
         try:
             return rate_limited_geocoding(unformatted_address)
-        except MaxCallsExceededException as e:
+        except (MaxCallsExceededException, GeocoderQuotaExceeded) as _:  # noqa
             #reraise more explicit exception with same traceback
             description = 'We exceeded our daily limit for Google Geocoding API'
             trace = sys.exc_info()[2]
-            raise RateLimitExceededException, (self.daily_rate, self.timedelta, description), trace
+            raise RateLimitExceededException(self.daily_rate, self.timedelta, description), None, trace
+        except (ConfigurationError, GeocoderQueryError, AttributeError):
+            raise
