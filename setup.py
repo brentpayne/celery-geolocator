@@ -12,7 +12,7 @@ requirements = [
 
 setup(
     name='celery_geolocator',
-    version='0.0.6',
+    version='0.0.7',
     description='Celery Geolocator',
     long_description="A celery wrapper around geopy",
     author='Brent Payne',
