@@ -4,8 +4,8 @@ from geopy.exc import GeocoderQueryError, GeocoderQuotaExceeded, ConfigurationEr
 
 from geopy.geocoders import GoogleV3
 
-from celery_geolocator.helpers.decorators import rate_limit, MaxCallsExceededException
-from celery_geolocator.helpers.singleton import Singleton
+from celery_geolocator.decorators import rate_limit, MaxCallsExceededException
+from celery_geolocator.singleton import Singleton
 
 
 __author__ = 'brent'

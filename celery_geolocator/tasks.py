@@ -1,8 +1,11 @@
 from __future__ import absolute_import
+import logging
 from celery import shared_task
 from geopy.exc import ConfigurationError, GeocoderQueryError
 from celery_geolocator.config import configuration
 from celery_geolocator.geocoders import GoogleRateLimitedGeocoder, RateLimitExceededException
+
+logger = logging.getLogger(__name__)
 
 __author__ = 'brent'
 
@@ -20,6 +23,7 @@ def geocode(unformatted_address, geocode_type="GoogleV3", api_key=None):
     except RateLimitExceededException as e:
         exception = "rate limit exceeded"
     except (ConfigurationError, GeocoderQueryError, AttributeError) as e:
+        logger.exception(e)
         exception = "bad query"
     except Exception as e:
         exception = str(type(e))

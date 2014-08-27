@@ -6,13 +6,13 @@ from setuptools import find_packages
 
 requirements = [
     'celery>=3.1.11',
-    'geopy>=1.1.1'
+    'geopy>=0.99'
 ]
 
 
 setup(
     name='celery_geolocator',
-    version='0.0.7',
+    version='0.0.10',
     description='Celery Geolocator',
     long_description="A celery wrapper around geopy",
     author='Brent Payne',
@@ -22,7 +22,7 @@ setup(
         'celery_geolocator',
     ],
     install_requires=requirements,
-    keywords=['celery', 'geopy', 'geolocate', 'celery-geolocator', 'geolocator'],
+    keywords=['celery', 'geopy', 'geolocate', 'celery-geolocator', 'geolocator', 'celery_geolocator'],
     classifiers=[
         "Topic :: Text Processing :: General",
         "Topic :: Text Processing",
