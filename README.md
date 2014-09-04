@@ -3,7 +3,7 @@ celery-geolocator
 
 Celery worker that wraps and rate limits calls to geolocators.  It uses geopy for calling geolocation APIs.
 
-© Celery-GoeLocator Project and individual contributors under the
+© Celery-GeoLocator Project and individual contributors under the
 [MIT License](https://github.com/geopy/geopy/blob/master/LICENSE).
 
 
