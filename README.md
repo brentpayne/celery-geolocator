@@ -31,7 +31,7 @@ $ python examples/strait_celery/test_celery_task.py "Bourbon County"
 ```sh
 $ celery worker --app celery_geolocator -Q=geocode ...
 ```
-It will set the worker to listen to a queue named `=geocode`.  Never use the *-Q* option with an *=*.
+Never use the *-Q* option with an *=*. It will set the worker to listen to a queue named `=geocode` instead of `geocode`.  
 
 
 ### Roadmap
