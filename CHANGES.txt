@@ -1,0 +1,5 @@
+# 0.0.11:
+==========
+
+added Nominatim geocoder
+added types of geocoders to the geocode call, correctly on GoogleV3 or Nominatim
