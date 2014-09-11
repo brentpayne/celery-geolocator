@@ -24,7 +24,7 @@ class rate_limit(object):  # known flake8 fail, not putting into camel case b/c 
         def rate_limited_function(*args, **kwargs):
             if not self.first_call_in_cycle:
                 self.first_call_in_cycle = datetime.datetime.now()
-            if self.number_of_calls + 1 > self.max_limit:
+            if self.max_limit and self.number_of_calls + 1 > self.max_limit:
                 if(self.refresh_after_timedelta):
                     time_left = datetime.datetime.now() + self.one_per_timedelta \
                                    - self.first_call_in_cycle

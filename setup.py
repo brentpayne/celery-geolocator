@@ -12,15 +12,13 @@ requirements = [
 
 setup(
     name='celery_geolocator',
-    version='0.0.10',
+    version='0.0.11',
     description='Celery Geolocator',
     long_description="A celery wrapper around geopy",
     author='Brent Payne',
     author_email='brent.payne@gmail.com',
     url='http://www.github.com/brentpayne/celery-geolocator',
-    packages=[
-        'celery_geolocator',
-    ],
+    packages=find_packages(exclude=('test*',)),
     install_requires=requirements,
     keywords=['celery', 'geopy', 'geolocate', 'celery-geolocator', 'geolocator', 'celery_geolocator'],
     classifiers=[
