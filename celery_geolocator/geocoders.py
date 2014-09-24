@@ -48,6 +48,7 @@ class GoogleRateLimitedGeocoder(Singleton):
                     refresh_after_timedelta=self.timedelta)
         def rate_limited_geocoding(unformatted_address):
             location = self.geolocator.geocode(unformatted_address)
+            # AttributeError for None results handled by caller
             return location.address, (location.latitude, location.longitude, location.altitude), location.raw
 
         try:
@@ -81,6 +82,7 @@ class NominatimRateLimitedGeocoder(Singleton):
             address_without_united_states = re.sub(r"\bUSA?\s*$|\bUnited\s*States\s*(?:of\s*America\s*)?$", "", unformatted_address, flags=re.IGNORECASE)
 
             location = self.geolocator.geocode(address_without_united_states)
+            # AttributeError for None results handled by caller
             return location.address, (location.latitude, location.longitude, location.altitude), location.raw
 
         try:
@@ -90,5 +92,5 @@ class NominatimRateLimitedGeocoder(Singleton):
             description = 'We exceeded our daily limit for Google Geocoding API'
             trace = sys.exc_info()[2]
             raise RateLimitExceededException(self.daily_rate, self.timedelta, description), None, trace
-        except (ConfigurationError, GeocoderQueryError, AttributeError):
+        except (ConfigurationError, AttributeError):
             raise
